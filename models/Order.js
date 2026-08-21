@@ -15,11 +15,13 @@ const orderSchema = new mongoose.Schema(
           ref: "Product",
           required: true,
         },
+
         quantity: {
           type: Number,
           required: true,
           min: 1,
         },
+
         price: {
           type: Number,
           required: true,
@@ -36,26 +38,51 @@ const orderSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["pending", "confirmed", "shipped", "delivered", "cancelled"],
+      enum: [
+        "pending",
+        "confirmed",
+        "shipped",
+        "delivered",
+        "cancelled",
+      ],
       default: "pending",
     },
 
     shippingAddress: {
+      firstName: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
+      lastName: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+
       street: {
         type: String,
         required: true,
+        trim: true,
       },
+
       city: {
         type: String,
         required: true,
+        trim: true,
       },
+
       wilaya: {
         type: String,
         required: true,
+        trim: true,
       },
+
       phone: {
         type: String,
         required: true,
+        trim: true,
       },
     },
   },
